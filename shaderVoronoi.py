@@ -58,6 +58,9 @@ void main() {
         }
     }
 
+    //colored version
+    //color += vec3(cos(iTime)+1.0/2.0, m_dist, sin(iTime)+1.0/2.0);
+    //black and white version
     color += m_dist;
 
     // Draw the point center
