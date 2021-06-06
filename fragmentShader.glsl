@@ -1,14 +1,3 @@
-VERTEX_SHADER = """
-#version 330 core
-layout(location = 0) in vec3 vPos;
-
-void main()
-{
-    gl_Position = vec4(vPos, 1.0);
-}
-"""
-
-FRAGMENT_SHADER = """
 #version 330 core
 #define fragCoord gl_FragCoord.xy
 
@@ -35,7 +24,7 @@ void main() {
     vec3 color = vec3(.0);
 
     // Scale
-    st *= 8.;
+    st *= 6.;
 
     vec2 i_st = floor(st);
     vec2 f_st = fract(st);
@@ -59,9 +48,9 @@ void main() {
     }
 
     //colored version
-    //color += vec3(cos(iTime)+1.0/2.0, m_dist, sin(iTime)+1.0/2.0);
+    //color += vec3(m_dist,sin(iTime / PI)+1.0/2 , sin(iTime / PI)+1.0/2 );
     //black and white version
-    color += m_dist;
+    color += vec3(m_dist -0.4, m_dist-0.1, m_dist-0.1);
 
     // Draw the point center
     color += 1.-step(.02, m_dist);
@@ -69,4 +58,3 @@ void main() {
 
     fragColor = vec4(color,1.0);
 }
-"""

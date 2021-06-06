@@ -7,12 +7,19 @@ from OpenGL.GL import shaders
 from sys import exit as exitsystem
 from numpy import array
 
-from shaderVoronoi import *
+def ReadFile(filename):
+    data = ""
+    with open(filename, 'r') as f:
+        data = f.read()
+    return data
+
+VERTEX_SHADER = ReadFile("./vertexShader.glsl")
+FRAGMENT_SHADER = ReadFile("./fragmentShader.glsl")
 
 class Main(object):
     def __init__(self):
         pygame.init()
-        self.resolution = 1000, 1000
+        self.resolution = 1920, 1080
         pygame.display.set_mode(self.resolution, DOUBLEBUF | OPENGL)
         pygame.display.set_caption('Voronoi diagram')
 
